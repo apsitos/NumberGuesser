@@ -1,0 +1,60 @@
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  text-align: center;
+  background-color: #404041;
+  padding:  20px 0;
+  }
+
+h1 {
+  font-weight: 700;
+  font-size: 60px;
+  color: #ED458B;
+}
+
+span {
+  font-weight: 300;
+  color: #E6E7E8;
+}
+
+body {
+  text-align: center;
+}
+
+.inputfield {
+  padding: 30px 0;
+}
+
+.inputbox {
+  width: 475px;
+  height: 45px;
+  font-size: 35px;
+  font-weight: 300;
+  border: 2px solid #D0D2D3;
+  font-family: 'Open Sans', sans-serif;
+  padding: 4px 0 4px 10px;
+  }
+
+.inputbox:focus, input:focus{
+  outline: none
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #D0D2D3;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 30px 5px;
+  width: 225px;
+  font-size: 24px;
+  font-weight: 300;
+  border-radius: 20px;
+}
+
+button.Reset {
+  font-size: 20px;
+  width: 475px;
+}
