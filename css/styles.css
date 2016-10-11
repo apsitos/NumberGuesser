@@ -5,13 +5,24 @@ html {
 header {
   text-align: center;
   background-color: #404041;
-  padding:  20px 0;
+  padding:  23px 0;
   }
 
 h1 {
   font-weight: 700;
   font-size: 55px;
   color: #ED458B;
+}
+
+p {
+  font-size: 27px;
+  color: #404041;
+}
+
+h2 {
+  color: #ED458B;
+  font-size: 192px;
+  margin: 10px;
 }
 
 span {
@@ -23,36 +34,19 @@ body {
   text-align: center;
 }
 
-.inputfield {
-  padding: 35px 0;
-}
-
-.inputbox {
-  width: 420px;
-  height: 35px;
-  font-size: 26px;
-  font-weight: 300;
-  color: #D0D2D3;
-  border: 2px solid #D0D2D3;
-  font-family: 'Open Sans', sans-serif;
-  padding: 4px 0 4px 10px;
-  }
-
-.inputbox:focus, input:focus{
-  outline: none
-}
-
 button {
   font-family: 'Open Sans', sans-serif;
   background-color: #D0D2D3;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  margin: 35px 15px;
-  width: 200px;
-  font-size: 26px;
+  margin: 44px 14px 14px 14px;
+  width: 196px;
+  font-size: 27px;
   font-weight: 300;
   border-radius: 20px;
+  outline: none;
+  padding: 2px;
 }
 
 button:hover {
@@ -61,21 +55,32 @@ button:hover {
   cursor: pointer;
 }
 
-.Reset {
+.inputfield {
+  margin: 12px 0;
+  padding: 35px 0;
+}
+
+.reset-btn {
   font-size: 20px;
-  width: 420px;
+  width: 425px;
+  padding: 3px;
 }
 
-p {
-  font-size: 26px;
-  color: #404041;
+#inputbox {
+  width: 415px;
+  height: 34px;
+  font-size: 27px;
+  font-weight: 300;
+  color: #D0D2D3;
+  border: 2px solid #D0D2D3;
+  font-family: 'Open Sans', sans-serif;
+  padding: 3px 0 4px 10px;
+  }
+
+#inputbox:focus, input:focus{
+  outline: none
 }
 
-.result {
-  margin: 50px 0;
-}
-
-h2 {
-  color: #ED458B;
-  font-size: 200px;
+#textResult {
+  margin-bottom: 15px;
 }
