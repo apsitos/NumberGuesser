@@ -67,7 +67,7 @@ button:hover {
 }
 
 #inputbox {
-  width: 415px;
+  width: 263px;
   height: 34px;
   font-size: 27px;
   font-weight: 300;
@@ -77,10 +77,31 @@ button:hover {
   padding: 3px 0 4px 10px;
   }
 
+  #inputboxMin, #inputboxMax {
+    width: 75px;
+    height: 34px;
+    font-size: 27px;
+    font-weight: 300;
+    color: #D0D2D3;
+    border: 2px solid #D0D2D3;
+    font-family: 'Open Sans', sans-serif;
+    padding: 3px 0 4px 10px;
+  }
+
 #inputbox:focus, input:focus{
   outline: none
 }
 
 #textResult {
   margin-bottom: 15px;
+}
+
+#clear-btn:disabled {
+  background-color: #EEE;
+  cursor: default;
+}
+
+#clear-btn:disabled:hover {
+  background-color: #EEE;
+  cursor: default;
 }

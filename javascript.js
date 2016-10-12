@@ -1,9 +1,50 @@
-var theNumber = Math.floor(Math.random()*100)+1;
+var startButton = document.querySelector("#start-btn");
 var guessButton = document.querySelector("#guess-btn");
-var clearButton = document.querySelector(".clear-btn");
+var clearButton = document.querySelector("#clear-btn");
 var resetButton = document.querySelector(".reset-btn");
+var inputField = document.getElementById("inputbox");
+var inputFieldMin = document.getElementById("inputboxMin");
+var inputFieldMax = document.getElementById("inputboxMax");
+var theGuess;
 
-function mainFunc(theNumber){
+
+startButton.addEventListener("click", function() {
+  checkMinMax();
+});
+
+guessButton.addEventListener("click", function() {
+  document.querySelector("#resultMsg").innerText = "Your last guess was";
+  mainFunc();
+  disableClearBtn();
+});
+
+clearButton.addEventListener("click", function() {
+  clearGuess();
+  disableClearBtn();
+});
+
+resetButton.addEventListener("click", function() {
+  resetGame();
+});
+
+
+inputField.addEventListener("keyup", function() {
+  if(inputField.value === ""){
+      clearButton.disabled = true;
+    } else {
+      clearButton.disabled = false;
+    };
+});
+
+function disableClearBtn(){
+  if(inputField.value === ""){
+    clearButton.disabled = true;
+  } else {
+    clearButton.disabled = false;
+  };
+}
+
+function mainFunc(){
   if(inputCheck()) {
     compareGuess();
     guessDisplay();
@@ -14,11 +55,16 @@ function mainFunc(theNumber){
 
 function compareGuess() {
   var input = getGuess();
-  if(input === theNumber)
+  if(input === theGuess){
     correctNum();
+  }
   else
-    input > theNumber ? tooHigh() : tooLow();
+    input > theGuess ? tooHigh() : tooLow();
 };
+
+function randoNum() {
+  return Math.floor(Math.random()*getMax())+getMin();
+}
 
 function clearGuess() {
   return document.getElementById("inputbox").value = "";
@@ -32,6 +78,14 @@ function getGuess(){
   return Number(document.getElementById("inputbox").value);
 }
 
+function getMin() {
+  return Number(document.getElementById("inputboxMin").value);
+}
+
+function getMax() {
+  return Number(document.getElementById("inputboxMax").value);
+}
+
 function tooHigh() {
   return document.querySelector("#textResult").innerText = "That is too high";
 };
@@ -41,7 +95,14 @@ function tooLow() {
 }
 
 function correctNum() {
-  return document.querySelector("#textResult").innerText = "That is correct!"
+  var newMin  = getMin() - 10;
+  var newMax = getMax() + 10;
+  document.getElementById("inputboxMin").value = newMin;
+  document.getElementById("inputboxMax").value = newMax;
+  guessButton.style.display = "none";
+  startButton.style.display = "inline-block";
+
+  return document.querySelector("#textResult").innerText = "That is correct! Now try to guess the number between the new range!";
 };
 
 function guessDisplay() {
@@ -50,30 +111,35 @@ function guessDisplay() {
 
 function badInputDisplay() {
   document.querySelector("h2").innerText = "";
-
-  document.querySelector("#textResult").innerText = "NOT a number between 1-100."
+  document.querySelector("#textResult").innerText = "NOT a number between " + getMin() + "-" + getMax() + "."
 };
 
+function badMinMaxDisplay() {
+  document.getElementById("errorMinMaxMsg").style.display = "block";
+}
+
 function addResultSection() {
-  document.getElementById("result").style.display = "block"
+  document.getElementById("result").style.display = "block";
+  document.getElementById("clear-btn").style.display = "inline-block";
+  document.getElementById("errorMinMaxMsg").style.display = "none";
+};
+
+function checkMinMax() {
+  if(getMin() !== "" && getMax() !== "" && getMin()<getMax()) {
+    guessButton.style.display = "inline-block";
+    startButton.style.display = "none";
+    errorMinMaxMsg.style.display = "none";
+    inputboxMin.disabled = true;
+    inputboxMax.disabled = true;
+    inputbox.disabled = false;
+    addResultSection();
+    return theGuess = randoNum();
+  } else {
+    badMinMaxDisplay();
+  }
 };
 
 function inputCheck() {
   var input = getGuess();
-  typeof input !== "number" || (input>0 && input<101);
-}
-              // Buttons
-// <------------------------------------->
-
-guessButton.addEventListener("click", function() {
-  addResultSection();
-  mainFunc(theNumber);
-});
-
-clearButton.addEventListener("click", function() {
-  clearGuess();
-});
-
-resetButton.addEventListener("click", function() {
-  resetGame();
-});
+  return (input>getMin()-1 && input<getMax()+1);
+};
